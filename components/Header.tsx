@@ -1,15 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { Ionicons } from '@expo/vector-icons'
-import { Octicons } from '@expo/vector-icons'
-import { iconSize } from '@/constants/dimensions'
+import { spacing } from '@/constants/dimensions';
+import { Feather } from '@expo/vector-icons';
 
-const Header = () => {
+interface HeaderProps {
+  title?: string;
+  showBackButton?: boolean;
+}
+
+const Header = ({ title = 'Profile', showBackButton = false }: HeaderProps) => {
   return (
     <View style={styles.container}>
-      <Ionicons name={"arrow-back"} size={iconSize.md} color="black" />
-      <Octicons name={"gear"} size={iconSize.md} color="black" />
+      {showBackButton ? (
+        <TouchableOpacity style={styles.backButton}>
+          <Feather name="arrow-left" size={24} color="#2d2d2d" />
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.backButton} />
+      )}
+      <Text style={styles.title}>{title}</Text>
+      <View style={styles.backButton} />
     </View>
   )
 }
@@ -20,5 +31,19 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: 'center',
+        paddingTop: spacing.lg,
+        paddingBottom: spacing.md,
+    },
+    backButton: {
+        width: 40,
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: '#2d2d2d',
     },
 })
