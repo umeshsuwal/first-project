@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { spacing } from '@/constants/dimensions';
 import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 interface HeaderProps {
   title?: string;
@@ -13,7 +14,7 @@ const Header = ({ title = 'Profile', showBackButton = false }: HeaderProps) => {
   return (
     <View style={styles.container}>
       {showBackButton ? (
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
           <Feather name="arrow-left" size={24} color="#2d2d2d" />
         </TouchableOpacity>
       ) : (

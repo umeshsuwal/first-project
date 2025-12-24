@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import { spacing } from '@/constants/dimensions';
+import { router } from 'expo-router';
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -12,26 +13,20 @@ const ProfileScreen = () => {
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <Header title="Profile" showBackButton={true} />
         
-        {/* Profile Image Section */}
         <View style={styles.profileImageContainer}>
             <View style={styles.profileImageWrapper}>
                 <Image 
                     source={require('@/assets/images/icon.png')} 
                     style={styles.profileImage} 
                 />
-                <TouchableOpacity style={styles.editIconContainer}>
-                    <Feather name="edit-3" size={14} color="white" />
-                </TouchableOpacity>
             </View>
         </View>
 
-        {/* Name and Email Section */}
         <View style={styles.nameEmailContainer}>
             <Text style={styles.name}>Umesh Suwal</Text>
             <Text style={styles.email}>mail@umeshsuwal.com.np</Text>
         </View>
 
-        {/* Stats Section */}
         <View style={styles.statsContainer}>
             <View style={styles.statItem}>
                 <View style={styles.iconWrapper}>
@@ -58,9 +53,11 @@ const ProfileScreen = () => {
             </View>
         </View>
 
-        {/* Menu Options */}
         <View style={styles.menuContainer}>
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity 
+                style={styles.menuItem}
+                onPress={() => router.push('/(tabs)/profile/personalInfoSettings')}
+            >
                 <View style={styles.menuLeft}>
                     <MaterialCommunityIcons name="account-cog-outline" size={24} color="#333" />
                     <Text style={styles.menuText}>Personal settings</Text>
@@ -68,7 +65,10 @@ const ProfileScreen = () => {
                 <Feather name="chevron-right" size={20} color="#999" />
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity 
+                style={styles.menuItem}
+                onPress={() => router.push('/(tabs)/profile/notificationSettings')}
+            >
                 <View style={styles.menuLeft}>
                     <MaterialCommunityIcons name="bell-outline" size={24} color="#333" />
                     <Text style={styles.menuText}>Notification Settings</Text>
@@ -76,7 +76,10 @@ const ProfileScreen = () => {
                 <Feather name="chevron-right" size={20} color="#999" />
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity 
+                style={styles.menuItem}
+                onPress={() => router.push('/(tabs)/profile/theme')}
+            >
                 <View style={styles.menuLeft}>
                     <MaterialCommunityIcons name="theme-light-dark" size={24} color="#333" />
                     <Text style={styles.menuText}>Theme (Light/Dark/Auto)</Text>
@@ -92,7 +95,10 @@ const ProfileScreen = () => {
                 <Feather name="chevron-right" size={20} color="#999" />
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.menuItem}>
+            <TouchableOpacity 
+                style={styles.menuItem}
+                onPress={() => router.push('/(tabs)/profile/aboutHelp')}
+            >
                 <View style={styles.menuLeft}>
                     <MaterialCommunityIcons name="information-outline" size={24} color="#333" />
                     <Text style={styles.menuText}>About & Help</Text>
@@ -130,28 +136,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 70,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.12,
+        shadowRadius: 6,
         elevation: 5,
     },
     profileImage: {
         height: 120,
         width: 120,
         borderRadius: 60,
-    },
-    editIconContainer: {
-        height: 36,
-        width: 36,
-        backgroundColor: '#9b6be0',
-        borderRadius: 18,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 2,
-        right: 2,
-        borderWidth: 4,
-        borderColor: 'white',
     },
     nameEmailContainer: {
         alignItems: 'center',
