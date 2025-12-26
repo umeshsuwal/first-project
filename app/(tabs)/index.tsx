@@ -3,12 +3,12 @@ import { router } from "expo-router";
 import React from "react";
 import {
   FlatList,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Image,
 } from "react-native";
 import Header from "../../components/Header";
 import { spacing } from "../../constants/dimensions";
